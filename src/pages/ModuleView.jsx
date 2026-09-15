@@ -12,22 +12,20 @@ const RECORDINGS = [
   { label: 'Práctica', href: 'http://tinyurl.com/CsGrabadas-ArquiPractica' },
 ];
 
-// Nombre corto para las pestañas: "12 - Unidad 5 - Lenguaje Ensamblador.pdf" -> "Lenguaje Ensamblador"
-const shortPdfName = (file) => {
-  const parts = file.replace(/\.pdf$/i, '').split(' - ');
-  return (parts[parts.length - 1] || file).replace(/_/g, ' ');
-};
+// Único PDF de teoría (todo el material de la cátedra). Cada módulo apunta a sus páginas.
+const THEORY_PDF = '/pdfs/teoria.pdf';
+const pdfUrl = (page) => `${THEORY_PDF}#page=${page}&view=FitH`;
 
 const ModuleView = ({ progress, setProgress }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
   const module = modules.find(m => m.id.toString() === id);
-  const [pdfIndex, setPdfIndex] = useState(0);
+  const [sectionIndex, setSectionIndex] = useState(0);
 
-  // Al cambiar de módulo, volver al primer PDF y al tope de la página
+  // Al cambiar de módulo, volver a la primera sección y al tope de la página
   useEffect(() => {
-    setPdfIndex(0);
+    setSectionIndex(0);
     window.scrollTo({ top: 0 });
   }, [id]);
 
@@ -43,8 +41,8 @@ const ModuleView = ({ progress, setProgress }) => {
   const isCompleted = progress.includes(id);
   const hasQuiz = Array.isArray(module.quiz) && module.quiz.length > 0;
   const targetTerm = location.state?.targetTerm;
-  const pdfs = module.pdfs ?? [];
-  const currentPdf = pdfs[pdfIndex] ?? pdfs[0];
+  const sections = module.sections ?? [];
+  const currentSection = sections[sectionIndex] ?? sections[0];
 
   const markComplete = () => {
     if (!isCompleted) setProgress(prev => [...prev, id]);
@@ -94,33 +92,36 @@ const ModuleView = ({ progress, setProgress }) => {
             <FileText className="text-accent" /> Material de Estudio
           </h2>
 
-          {pdfs.length > 1 && (
+          {sections.length > 1 && (
             <div className="pdf-tabs" role="tablist">
-              {pdfs.map((file, i) => (
+              {sections.map((section, i) => (
                 <button
-                  key={file}
+                  key={section.page}
                   type="button"
                   role="tab"
-                  aria-selected={i === pdfIndex}
-                  className={`pdf-tab ${i === pdfIndex ? 'active' : ''}`}
-                  onClick={() => setPdfIndex(i)}
+                  aria-selected={i === sectionIndex}
+                  className={`pdf-tab ${i === sectionIndex ? 'active' : ''}`}
+                  onClick={() => setSectionIndex(i)}
                 >
-                  {shortPdfName(file)}
+                  {section.label}
                 </button>
               ))}
             </div>
           )}
 
-          {currentPdf ? (
+          {currentSection ? (
             <>
               <p className="mb-4 text-sm flex items-center gap-2 flex-wrap">
-                <span>Archivo: <strong>{currentPdf}</strong></span>
-                <a href={`/pdfs/${currentPdf}`} target="_blank" rel="noreferrer" className="text-accent flex items-center gap-1">
+                <span>
+                  <strong>{currentSection.label}</strong> · página {currentSection.page} del material teórico
+                </span>
+                <a href={pdfUrl(currentSection.page)} target="_blank" rel="noreferrer" className="text-accent flex items-center gap-1">
                   Abrir en pestaña nueva <ExternalLink size={14} />
                 </a>
               </p>
               <div className="pdf-frame">
-                <iframe src={`/pdfs/${currentPdf}`} title={`PDF: ${shortPdfName(currentPdf)}`} />
+                {/* key fuerza el remontaje: cambiar sólo el #page del src no siempre mueve el visor */}
+                <iframe key={`${id}-${currentSection.page}`} src={pdfUrl(currentSection.page)} title={`Teoría: ${currentSection.label}`} />
               </div>
             </>
           ) : (

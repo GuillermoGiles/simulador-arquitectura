@@ -3,8 +3,11 @@ export const modules = [
     "id": 1,
     "title": "Unidad 1: Representación de Datos",
     "description": "Sistemas de numeración, punto fijo y flotante.",
-    "pdfs": [
-      "1- Representación de Datos - Unidad 1.pdf"
+    "sections": [
+      {
+        "label": "Representación de Datos",
+        "page": 1
+      }
     ],
     "flashcards": [
       {
@@ -245,8 +248,15 @@ export const modules = [
     "id": 2,
     "title": "Unidad 2: Circuitos Lógicos",
     "description": "Compuertas lógicas y álgebra de Boole.",
-    "pdfs": [
-      "2- Circuitos Lógicos - Unidad 2.pdf"
+    "sections": [
+      {
+        "label": "Circuitos Lógicos",
+        "page": 155
+      },
+      {
+        "label": "Multiplexores (ejemplos)",
+        "page": 197
+      }
     ],
     "flashcards": [
       {
@@ -487,11 +497,19 @@ export const modules = [
     "id": 3,
     "title": "Unidad 3: Circuitos Digitales",
     "description": "Circuitos combinacionales y secuenciales.",
-    "pdfs": [
-      "3- Circuitos Digitales - Unidad 3 - Circuitos Combinacionales.pdf",
-      "4- Circuitos Digitales - Unidad 3 - Circuitos Secuenciales - Flip Flop.pdf",
-      "5- Circuitos Digitales - Unidad 3 - Circuitos Secuenciales - Registros - Contadores.pdf",
-      "6- Circuitos Digitales - Unidad 3 - Memorias ROM Y RAM.pdf"
+    "sections": [
+      {
+        "label": "Circuitos Combinacionales",
+        "page": 118
+      },
+      {
+        "label": "Flip Flop",
+        "page": 143
+      },
+      {
+        "label": "Memorias ROM y RAM",
+        "page": 216
+      }
     ],
     "flashcards": [
       {
@@ -732,11 +750,19 @@ export const modules = [
     "id": 4,
     "title": "Unidad 4: Estructura del Computador",
     "description": "Dispositivos de almacenamiento e instrucciones.",
-    "pdfs": [
-      "7- Estructura del Computador - Unidad 4 - Dispositivos de Almacenamiento.pdf",
-      "8- Estructura del Computador - Unidad 4 - Registros Internos del Procesador - Microprocesadores.pdf",
-      "9- Estructura del Computador - Unidad 4 - Instrucciones.pdf",
-      "10- Sistemas Operativos.pdf"
+    "sections": [
+      {
+        "label": "Estructura del Computador",
+        "page": 244
+      },
+      {
+        "label": "Microprocesadores y Registros",
+        "page": 312
+      },
+      {
+        "label": "Instrucciones",
+        "page": 369
+      }
     ],
     "flashcards": [
       {
@@ -977,11 +1003,23 @@ export const modules = [
     "id": 5,
     "title": "Unidad 5: Estructura del Procesador",
     "description": "Lenguaje ensamblador e interrupciones.",
-    "pdfs": [
-      "11- Unidad 5 - Estructura del Procesador.pdf",
-      "12 - Unidad 5 - Lenguaje Ensamblador.pdf",
-      "13 - Unidad 5 - Interrupciones.pdf",
-      "14 - Unidad 5 - Microcódigo.pdf"
+    "sections": [
+      {
+        "label": "Estructura del Procesador",
+        "page": 378
+      },
+      {
+        "label": "Lenguaje Ensamblador",
+        "page": 397
+      },
+      {
+        "label": "Interrupciones",
+        "page": 424
+      },
+      {
+        "label": "Microcódigo",
+        "page": 447
+      }
     ],
     "flashcards": [
       {
@@ -1222,8 +1260,11 @@ export const modules = [
     "id": 6,
     "title": "Unidad 6: Interfaz de Entrada/Salida",
     "description": "Buses y transferencia de datos.",
-    "pdfs": [
-      "15 - Unidad 6 - Interfaz_de_Entrada_Salida.pdf"
+    "sections": [
+      {
+        "label": "Interfaz de Entrada/Salida",
+        "page": 458
+      }
     ],
     "flashcards": [
       {
@@ -1464,9 +1505,15 @@ export const modules = [
     "id": 7,
     "title": "Unidad 7: Traductores",
     "description": "Arquitecturas CISC y RISC.",
-    "pdfs": [
-      "16 - Unidad 7 Traductores de Lenguaje.pdf",
-      "17 - Unidad 7 Arquitectura CISC_y_RISC.pdf"
+    "sections": [
+      {
+        "label": "Traductores de Lenguaje",
+        "page": 496
+      },
+      {
+        "label": "CISC vs RISC",
+        "page": 504
+      }
     ],
     "flashcards": [
       {
