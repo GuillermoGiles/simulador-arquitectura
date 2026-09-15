@@ -3,7 +3,9 @@ export const modules = [
     "id": 1,
     "title": "Unidad 1: Representación de Datos",
     "description": "Sistemas de numeración, punto fijo y flotante.",
-    "pdf": "1- Representación de Datos - Unidad 1.pdf",
+    "pdfs": [
+      "1- Representación de Datos - Unidad 1.pdf"
+    ],
     "flashcards": [
       {
         "term": "Informática",
@@ -135,7 +137,8 @@ export const modules = [
           "Signo y Módulo",
           "Exceso 127"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "En Signo y Módulo el bit más significativo sólo indica el signo, por lo que 0000 y 1000 (4 bits) representan +0 y -0. Complemento a 2 tiene un único cero."
       },
       {
         "question": "¿Cuántos números distintos se pueden representar en Binario Sin Signo (BSS) utilizando 8 bits?",
@@ -145,7 +148,8 @@ export const modules = [
           "256",
           "512"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "Con n bits se pueden formar 2^n combinaciones distintas. 2^8 = 256 valores, que en BSS van de 0 a 255."
       },
       {
         "question": "En el formato IEEE 754 de Precisión Simple (32 bits), ¿cuántos bits se destinan a la mantisa?",
@@ -155,7 +159,8 @@ export const modules = [
           "16 bits",
           "23 bits"
         ],
-        "answer": 3
+        "answer": 3,
+        "explanation": "IEEE 754 simple precisión reparte los 32 bits en 1 bit de signo, 8 bits de exponente (en exceso 127) y 23 bits de mantisa."
       },
       {
         "question": "¿Cómo se representa el número decimal -5 utilizando 4 bits en la convención de Complemento a 2?",
@@ -165,7 +170,8 @@ export const modules = [
           "1011",
           "1111"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "5 = 0101. Se invierten los bits (1010) y se suma 1: 1011. Verificación: -8 + 0 + 2 + 1 = -5."
       },
       {
         "question": "¿Qué significa el acrónimo BCD?",
@@ -175,7 +181,8 @@ export const modules = [
           "Bit Control Data",
           "Byte Coded Digit"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "BCD (Binary Coded Decimal) codifica cada dígito decimal por separado con 4 bits. Por ejemplo, 42 = 0100 0010."
       },
       {
         "question": "En una conversión directa de binario a hexadecimal, ¿de a cuántos bits se realizan las agrupaciones?",
@@ -185,7 +192,8 @@ export const modules = [
           "4 bits",
           "8 bits"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "Cada dígito hexadecimal (0-F) representa exactamente 16 = 2^4 valores, por lo que se agrupan los bits de a 4 empezando desde la derecha."
       },
       {
         "question": "¿Qué indica la bandera (flag) V en la aritmética de una computadora?",
@@ -195,7 +203,8 @@ export const modules = [
           "Signo del resultado",
           "Desbordamiento u Overflow"
         ],
-        "answer": 3
+        "answer": 3,
+        "explanation": "El flag V (oVerflow) se activa cuando el resultado de una operación con signo excede el rango representable, es decir, cuando el acarreo hacia el bit de signo difiere del acarreo de salida."
       },
       {
         "question": "¿Cuál es el rango de representación para números de 8 bits en Complemento a 2?",
@@ -205,7 +214,8 @@ export const modules = [
           "0 a 255",
           "-128 a +128"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "En Ca2 con n bits el rango es -2^(n-1) a 2^(n-1) - 1. Para n = 8: -128 a +127. El rango es asimétrico porque hay un único cero."
       },
       {
         "question": "En la representación por Signo y Módulo, ¿qué indica un '1' en el bit más significativo (MSB)?",
@@ -215,7 +225,8 @@ export const modules = [
           "Que existe acarreo",
           "Que el resultado es cero"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "En Signo y Módulo el MSB es el bit de signo: 0 indica positivo y 1 indica negativo. Los restantes bits representan el módulo (valor absoluto)."
       },
       {
         "question": "Un Gigabyte (GB) equivale matemáticamente a:",
@@ -225,7 +236,8 @@ export const modules = [
           "1024 Megabytes",
           "1000000 Bytes"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "En la convención binaria cada prefijo multiplica por 2^10 = 1024: 1 GB = 1024 MB = 1024 × 1024 KB."
       }
     ]
   },
@@ -233,7 +245,9 @@ export const modules = [
     "id": 2,
     "title": "Unidad 2: Circuitos Lógicos",
     "description": "Compuertas lógicas y álgebra de Boole.",
-    "pdf": "2- Circuitos Lógicos - Unidad 2.pdf",
+    "pdfs": [
+      "2- Circuitos Lógicos - Unidad 2.pdf"
+    ],
     "flashcards": [
       {
         "term": "Sistema",
@@ -365,7 +379,8 @@ export const modules = [
           "Utiliza exclusivamente compuertas mecánicas.",
           "No guarda relación entre sus elementos."
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "Un sistema digital opera con magnitudes discretas (típicamente 0 y 1), a diferencia de los sistemas analógicos que trabajan con valores continuos."
       },
       {
         "question": "¿Quién adaptó el Álgebra de Boole en 1938 para su aplicación en sistemas digitales?",
@@ -375,7 +390,8 @@ export const modules = [
           "Claude Shannon",
           "John von Neumann"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "George Boole formuló el álgebra en 1854, pero fue Claude Shannon quien en 1938 demostró que servía para analizar y diseñar circuitos de conmutación."
       },
       {
         "question": "En el álgebra de Boole, ¿cuál es el resultado del postulado de complementación lógica 'a + a\\''?",
@@ -385,7 +401,8 @@ export const modules = [
           "1",
           "a'"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "Por el postulado de complementación, una variable sumada (OR) con su complemento siempre es 1, ya que al menos uno de los dos términos vale 1. Del mismo modo, a · a' = 0."
       },
       {
         "question": "¿Qué afirma el Principio de Dualidad en álgebra binaria?",
@@ -395,7 +412,8 @@ export const modules = [
           "Toda igualdad sigue siendo válida si se intercambian (+) y (.), y (0) y (1).",
           "Los mapas de Karnaugh siempre son matrices simétricas."
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "El principio de dualidad establece que si en una identidad válida se intercambian los operadores + y · y los elementos 0 y 1, la expresión resultante también es válida."
       },
       {
         "question": "De acuerdo a la jerarquía de operadores lógicos (si no existen paréntesis), ¿qué operación se realiza primero?",
@@ -405,7 +423,8 @@ export const modules = [
           "Producto (AND)",
           "Equivalencia (XOR)"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "La jerarquía de operadores lógicos es: primero NOT (negación), luego AND (producto) y por último OR (suma), análoga a la aritmética."
       },
       {
         "question": "¿Cuál es la compuerta lógica que implementa la operación producto X = A . B?",
@@ -415,7 +434,8 @@ export const modules = [
           "AND",
           "XOR"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "La compuerta AND entrega 1 sólo cuando todas sus entradas valen 1, lo que coincide con el producto lógico A · B."
       },
       {
         "question": "¿Qué es un mintérmino?",
@@ -425,7 +445,8 @@ export const modules = [
           "Una técnica para minimizar funciones en mapas de Karnaugh.",
           "Un postulado utilizado para demostrar teoremas."
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "Un mintérmino es un producto en el que aparecen todas las variables de la función, cada una una sola vez, negada o sin negar. Vale 1 para una única combinación de entradas."
       },
       {
         "question": "¿Cómo se obtiene la función lógica a partir de la tabla de verdad al analizar dónde la función vale 1?",
@@ -435,7 +456,8 @@ export const modules = [
           "Mediante la suma de maxtérminos.",
           "Mediante diagramas temporales."
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "La forma canónica en suma de productos (SOP) se obtiene sumando (OR) los mintérminos correspondientes a las filas donde la función vale 1."
       },
       {
         "question": "Al minimizar usando Mapas de Karnaugh, ¿qué ocurre si agrupamos 4 celdas adyacentes?",
@@ -445,7 +467,8 @@ export const modules = [
           "Se eliminan 2 variables.",
           "Se eliminan 4 variables."
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "Cada duplicación del tamaño del grupo elimina una variable: 2 celdas eliminan 1 variable, 4 celdas eliminan 2 y 8 celdas eliminan 3."
       },
       {
         "question": "¿Por qué se utiliza el código de Gray en la construcción de Mapas de Karnaugh?",
@@ -455,7 +478,8 @@ export const modules = [
           "Para realizar sumas binarias de mayor velocidad.",
           "Para incrementar la tensión eléctrica en la salida de las compuertas."
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation": "El código Gray garantiza que dos celdas contiguas del mapa difieran en una sola variable, lo que permite aplicar la propiedad AB + AB' = A al agrupar."
       }
     ]
   },
@@ -463,7 +487,12 @@ export const modules = [
     "id": 3,
     "title": "Unidad 3: Circuitos Digitales",
     "description": "Circuitos combinacionales y secuenciales.",
-    "pdf": "3- Circuitos Digitales - Unidad 3 - Circuitos Combinacionales.pdf",
+    "pdfs": [
+      "3- Circuitos Digitales - Unidad 3 - Circuitos Combinacionales.pdf",
+      "4- Circuitos Digitales - Unidad 3 - Circuitos Secuenciales - Flip Flop.pdf",
+      "5- Circuitos Digitales - Unidad 3 - Circuitos Secuenciales - Registros - Contadores.pdf",
+      "6- Circuitos Digitales - Unidad 3 - Memorias ROM Y RAM.pdf"
+    ],
     "flashcards": [
       {
         "term": "Sistema digital",
@@ -595,7 +624,8 @@ export const modules = [
           "Cada combinación de entrada se corresponde con una y sólo una combinación de salida.",
           "Depende exclusivamente de una señal de reloj."
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "En un circuito combinacional la salida depende únicamente de la combinación actual de entradas, sin memoria del pasado. Los secuenciales, en cambio, dependen también del estado anterior."
       },
       {
         "question": "En un semisumador (Half Adder), ¿cuál es la operación lógica que define el bit de resultado S?",
@@ -605,7 +635,8 @@ export const modules = [
           "S = a NOT b",
           "S = a XOR b"
         ],
-        "answer": 3
+        "answer": 3,
+        "explanation": "La suma de dos bits sin acarreo de entrada da S = a XOR b (1 cuando los bits son distintos) y acarreo C = a AND b."
       },
       {
         "question": "¿Qué función cumplen las variables de control en un sistema digital?",
@@ -615,7 +646,8 @@ export const modules = [
           "Son las únicas variables que determinan el resultado de la salida.",
           "Almacenan los datos procesados en la memoria interna."
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "Las variables de control (por ejemplo la selección de un multiplexor o el modo de un sumador/restador) determinan cómo el circuito procesa las variables de datos."
       },
       {
         "question": "¿Cómo se diferencia un sumador completo (Full Adder) de un semisumador (Half Adder)?",
@@ -625,7 +657,8 @@ export const modules = [
           "El semisumador puede sumar tres bits a la vez.",
           "El semisumador no genera acarreo de salida."
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation": "El semisumador sólo suma dos bits; el sumador completo agrega una tercera entrada, el acarreo Cin proveniente de la etapa anterior, y por eso puede encadenarse."
       },
       {
         "question": "¿Qué cantidad de compuertas lógicas componen un circuito de escala MSI (Medium Scale of Integration)?",
@@ -635,7 +668,8 @@ export const modules = [
           "Alrededor de 1000",
           "Más de 100000"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "La clasificación por escala de integración es: SSI (hasta 12 compuertas), MSI (12 a 100), LSI (100 a 1000) y VLSI (más de 1000)."
       },
       {
         "question": "¿Cuál es la función de un circuito decodificador?",
@@ -645,7 +679,8 @@ export const modules = [
           "Reconocer qué combinación está presente en sus n entradas para activar una sola de sus 2^n salidas.",
           "Almacenar n bits de información de forma secuencial."
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "Un decodificador de n a 2^n activa exactamente una salida, la que corresponde al código binario presente en sus entradas."
       },
       {
         "question": "En un multiplexor con n variables de selección, ¿cuántas líneas de entrada de datos (k) tiene el circuito?",
@@ -655,7 +690,8 @@ export const modules = [
           "k = n^2",
           "k = 2^n"
         ],
-        "answer": 3
+        "answer": 3,
+        "explanation": "Con n líneas de selección se pueden distinguir 2^n combinaciones, por lo que un multiplexor puede elegir entre 2^n entradas de datos (por ejemplo, 3 líneas → 8 entradas)."
       },
       {
         "question": "¿Cuál de las siguientes definiciones describe a un Demultiplexor?",
@@ -665,7 +701,8 @@ export const modules = [
           "Minimiza funciones lógicas usando simplificación booleana.",
           "Mantiene estados previos mediante memoria interna."
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation": "El demultiplexor toma una única entrada y la dirige a una de sus 2^n salidas según las líneas de selección; es la operación inversa del multiplexor."
       },
       {
         "question": "En el diseño de un sumador/restador en paralelo, ¿qué sucede cuando la variable 'Modo' invierte los bits (Bi) y alimenta el acarreo de entrada (Cin-1)?",
@@ -675,7 +712,8 @@ export const modules = [
           "La operación queda configurada como una resta.",
           "Las salidas se vuelven cero inmediatamente."
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "Invertir B y sumar 1 a través del acarreo de entrada equivale a calcular el complemento a 2 de B, por lo que A + (-B) = A - B."
       },
       {
         "question": "¿Por qué los sistemas secuenciales necesitan poseer memoria interna?",
@@ -685,7 +723,8 @@ export const modules = [
           "Para simplificar el uso de compuertas lógicas exclusivas (XOR).",
           "Para acelerar la decodificación de datos."
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "En un sistema secuencial la salida depende de la secuencia previa de entradas, por lo que se necesita memoria interna (flip-flops) que almacene el estado."
       }
     ]
   },
@@ -693,7 +732,12 @@ export const modules = [
     "id": 4,
     "title": "Unidad 4: Estructura del Computador",
     "description": "Dispositivos de almacenamiento e instrucciones.",
-    "pdf": "7- Estructura del Computador - Unidad 4 - Dispositivos de Almacenamiento.pdf",
+    "pdfs": [
+      "7- Estructura del Computador - Unidad 4 - Dispositivos de Almacenamiento.pdf",
+      "8- Estructura del Computador - Unidad 4 - Registros Internos del Procesador - Microprocesadores.pdf",
+      "9- Estructura del Computador - Unidad 4 - Instrucciones.pdf",
+      "10- Sistemas Operativos.pdf"
+    ],
     "flashcards": [
       {
         "term": "Interfaz de Entrada-Salida",
@@ -825,7 +869,8 @@ export const modules = [
           "Cuántica",
           "Memoria Flash / Estado Sólido"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "Las tecnologías de almacenamiento actuales son magnética (discos duros, cintas), óptica (CD/DVD/Blu-ray) y de semiconductores (SSD, flash). La cuántica es aún experimental."
       },
       {
         "question": "En la estructura interna de un disco duro, ¿cómo se denomina al conjunto de pistas de igual radio vistas de forma vertical?",
@@ -835,7 +880,8 @@ export const modules = [
           "Clústeres",
           "Platos"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "Un cilindro es el conjunto de pistas que están a la misma distancia del centro en todos los platos. Leer un cilindro completo no requiere mover los cabezales."
       },
       {
         "question": "Según las reglas de la Jerarquía de Memoria, ¿qué afirmación es correcta?",
@@ -845,7 +891,8 @@ export const modules = [
           "A menor tiempo de acceso, mayor costo.",
           "A mayor capacidad, mayor costo por bit."
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "En la jerarquía de memoria, cuanto más cerca del procesador está un nivel, menor es su tiempo de acceso, menor su capacidad y mayor su costo por bit."
       },
       {
         "question": "¿Cuál es el nivel más alto, rápido y de menor capacidad en la jerarquía de memoria?",
@@ -855,7 +902,8 @@ export const modules = [
           "Registros Internos del Procesador",
           "Almacenamiento Secundario"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "Los registros internos del procesador son el nivel más alto de la jerarquía: acceso en un ciclo de reloj, pero sólo unas pocas decenas de palabras."
       },
       {
         "question": "¿Qué tecnología de memoria se utiliza habitualmente para construir la memoria caché debido a su alta velocidad?",
@@ -865,7 +913,8 @@ export const modules = [
           "ROM",
           "Memoria Flash"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "La SRAM (estática) usa flip-flops y no necesita refresco, por lo que es más rápida aunque más costosa y menos densa que la DRAM. Por eso se usa en la caché."
       },
       {
         "question": "Si el byte de menor peso de un dato se almacena en la dirección más baja de la memoria, ¿qué formato se está utilizando?",
@@ -875,7 +924,8 @@ export const modules = [
           "Middle Endian",
           "Segmentado"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "Little Endian almacena el byte menos significativo en la dirección más baja (como los procesadores x86). Big Endian hace lo contrario."
       },
       {
         "question": "¿Cuál es el propósito de la técnica de 'Swapping'?",
@@ -885,7 +935,8 @@ export const modules = [
           "Aumentar físicamente la memoria RAM instalando más módulos.",
           "Evitar que los virus accedan al almacenamiento secundario."
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation": "El swapping (intercambio) saca temporalmente procesos completos de la memoria principal al disco para liberar espacio y volverlos a cargar cuando se necesiten."
       },
       {
         "question": "En relación a los modos de operación de los procesadores, ¿qué modo provee resguardo de la integridad y protección de la memoria?",
@@ -895,7 +946,8 @@ export const modules = [
           "Modo Lógico",
           "Modo Protegido"
         ],
-        "answer": 3
+        "answer": 3,
+        "explanation": "El modo protegido (desde el 80286/80386) habilita protección de memoria, niveles de privilegio y memoria virtual; en modo real no existen esas protecciones."
       },
       {
         "question": "¿Cuál es una desventaja característica de usar 'Paginación' (tamaño fijo) en la memoria?",
@@ -905,7 +957,8 @@ export const modules = [
           "Requiere que el programador gestione el movimiento de datos manualmente.",
           "Es exclusiva de la familia de procesadores 8086/8088."
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "Con páginas de tamaño fijo se produce fragmentación interna: si un proceso necesita menos que una página, el espacio sobrante de esa página queda desperdiciado."
       },
       {
         "question": "En los procesadores 8086/8088, ¿qué registro de segmento se utiliza por defecto para las instrucciones que usan la pila (como PUSH y POP)?",
@@ -915,7 +968,8 @@ export const modules = [
           "SS (Stack Segment)",
           "ES (Extra Segment)"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "En el 8086 la pila se direcciona mediante SS:SP. PUSH y POP usan implícitamente el registro de segmento SS y el puntero de pila SP."
       }
     ]
   },
@@ -923,7 +977,12 @@ export const modules = [
     "id": 5,
     "title": "Unidad 5: Estructura del Procesador",
     "description": "Lenguaje ensamblador e interrupciones.",
-    "pdf": "11- Unidad 5 - Estructura del Procesador.pdf",
+    "pdfs": [
+      "11- Unidad 5 - Estructura del Procesador.pdf",
+      "12 - Unidad 5 - Lenguaje Ensamblador.pdf",
+      "13 - Unidad 5 - Interrupciones.pdf",
+      "14 - Unidad 5 - Microcódigo.pdf"
+    ],
     "flashcards": [
       {
         "term": "Unidad de Ejecución (EU)",
@@ -1055,7 +1114,8 @@ export const modules = [
           "Almacenar instrucciones en memoria",
           "Transportar señales de direcciones"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation": "En el 8086 la Unidad de Ejecución (EU) es la que ejecuta las instrucciones. Según el material, leer e incrementar el IP para obtener la siguiente instrucción es una de sus funciones principales."
       },
       {
         "question": "¿Qué tipo de estructura utiliza la cola de instrucciones de la BIU?",
@@ -1065,7 +1125,8 @@ export const modules = [
           "Árbol Binario",
           "Hash Table"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "La cola de prefetch de la BIU es una estructura FIFO: las instrucciones se consumen en el mismo orden en que fueron leídas de memoria."
       },
       {
         "question": "¿Qué característica del sistema está definida por el tamaño del Bus de Direcciones?",
@@ -1075,7 +1136,8 @@ export const modules = [
           "La cantidad de memoria RAM que se puede direccionar",
           "El tamaño de la Unidad Aritmético-Lógica"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "Con n líneas de dirección se pueden direccionar 2^n posiciones. Por ejemplo, 20 líneas en el 8086 permiten direccionar 1 MB."
       },
       {
         "question": "¿Cuál es el objetivo principal de la Unidad de Control (UC)?",
@@ -1085,7 +1147,8 @@ export const modules = [
           "Conectar el procesador a los periféricos externos",
           "Almacenar los resultados finales de un programa"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "La Unidad de Control genera, en cada ciclo, las señales de control (lectura, escritura, habilitación de registros, operación de la ALU) que ejecutan la instrucción decodificada."
       },
       {
         "question": "¿Qué circuito de la ALU se encarga de detectar si dos datos son iguales?",
@@ -1095,7 +1158,8 @@ export const modules = [
           "Comparador",
           "Registro de Estado"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "El comparador de la ALU determina si dos operandos son iguales, o cuál es mayor, activando los flags correspondientes (por ejemplo Z tras una resta)."
       },
       {
         "question": "¿Qué tipo de operación elemental transforma la información al pasarla por un operador combinacional?",
@@ -1105,7 +1169,8 @@ export const modules = [
           "Operación de proceso",
           "Operación de memoria"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "Las operaciones de proceso transforman datos mediante un operador combinacional (ALU); las de transferencia sólo mueven información entre registros sin modificarla."
       },
       {
         "question": "¿Qué elemento del microprocesador es considerado básicamente como la 'calculadora del sistema'?",
@@ -1115,7 +1180,8 @@ export const modules = [
           "Bus de Control",
           "Registro Instruction Pointer (IP)"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "La ALU es el bloque que realiza las operaciones aritméticas (suma, resta) y lógicas (AND, OR, NOT, desplazamientos), por eso se la considera la calculadora del sistema."
       },
       {
         "question": "Según el texto, ¿a qué se denomina 'ciclo de reloj'?",
@@ -1125,7 +1191,8 @@ export const modules = [
           "Al tiempo que le lleva a un transistor en apagarse y encenderse",
           "A la velocidad con que gira el disco duro"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "El material define el ciclo de reloj como el tiempo que tarda un transistor en apagarse y encenderse; la frecuencia (ciclos por segundo) determina la velocidad del procesador."
       },
       {
         "question": "¿Qué determina el tamaño del Bus de Datos?",
@@ -1135,7 +1202,8 @@ export const modules = [
           "La velocidad máxima de la computadora",
           "El tamaño del conjunto de bits que se transferirán en simultáneo"
         ],
-        "answer": 3
+        "answer": 3,
+        "explanation": "El ancho del bus de datos indica cuántos bits viajan simultáneamente entre el procesador y la memoria. Un bus de 16 bits transfiere 2 bytes por ciclo."
       },
       {
         "question": "¿Cuál de estos registros forma parte de la Unidad Aritmético-Lógica (ALU)?",
@@ -1145,7 +1213,8 @@ export const modules = [
           "Registro IP",
           "Cola de instrucciones"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "El acumulador es el registro asociado a la ALU: normalmente guarda uno de los operandos y recibe el resultado de la operación."
       }
     ]
   },
@@ -1153,7 +1222,9 @@ export const modules = [
     "id": 6,
     "title": "Unidad 6: Interfaz de Entrada/Salida",
     "description": "Buses y transferencia de datos.",
-    "pdf": "15 - Unidad 6 - Interfaz_de_Entrada_Salida.pdf",
+    "pdfs": [
+      "15 - Unidad 6 - Interfaz_de_Entrada_Salida.pdf"
+    ],
     "flashcards": [
       {
         "term": "Subsistema de E/S",
@@ -1285,7 +1356,8 @@ export const modules = [
           "Establecer la comunicación con la CPU.",
           "Detectar errores en la transmisión."
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "La interfaz de E/S se ocupa de sincronizar, adaptar y transferir datos entre CPU y periféricos. Ejecutar programas de usuario es tarea del procesador."
       },
       {
         "question": "¿Qué método de E/S requiere que la CPU consulte repetidamente el estado del dispositivo, provocando pérdida de tiempo por 'espera activa'?",
@@ -1295,7 +1367,8 @@ export const modules = [
           "Polling (Encuesta / Sondeo)",
           "Bus Transparente"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "En polling la CPU pregunta repetidamente al periférico si está listo, desperdiciando ciclos en la espera activa. Las interrupciones evitan ese costo."
       },
       {
         "question": "¿Qué tipo de interrupción se genera por una anomalía en una instrucción, como una división por cero?",
@@ -1305,7 +1378,8 @@ export const modules = [
           "Interrupción No Enmascarable (NMI)",
           "Interrupción de Reloj"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "Las interrupciones internas o excepciones (división por cero, opcode inválido) son síncronas porque las genera la propia instrucción en ejecución."
       },
       {
         "question": "En el DMA 'Modo Bloque' (Burst), ¿qué le ocurre a la CPU durante la transferencia de datos?",
@@ -1315,7 +1389,8 @@ export const modules = [
           "Supervisa directamente cada bit que se transmite.",
           "Pasa a modo seguro de solo lectura."
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "En modo ráfaga (burst) el DMA toma el bus y transfiere el bloque completo; mientras tanto la CPU queda detenida porque no puede acceder a los buses."
       },
       {
         "question": "¿Cómo se llama el modo de DMA donde el controlador transfiere una única palabra de datos, cediendo y retomando el control del bus intercaladamente con la CPU?",
@@ -1325,7 +1400,8 @@ export const modules = [
           "Robo de Ciclo",
           "Polling Intercalado"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "En robo de ciclo (cycle stealing) el DMA transfiere una palabra por vez, tomando un ciclo del bus e intercalándose con la CPU, que sigue ejecutando con leve ralentización."
       },
       {
         "question": "¿Qué indica el 'ancho de bus' de las señales de datos en una transferencia?",
@@ -1335,7 +1411,8 @@ export const modules = [
           "El número de bits transferidos en paralelo, es decir, el potencial de trabajo.",
           "La frecuencia del reloj (clock) en el bus sincrónico."
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "El ancho de bus de datos es la cantidad de bits que se transfieren en paralelo en cada ciclo; junto con la frecuencia determina el ancho de banda."
       },
       {
         "question": "¿Cómo está constituido fundamentalmente un controlador de periférico?",
@@ -1345,7 +1422,8 @@ export const modules = [
           "Por un cable de datos y una antena receptora.",
           "Por la unidad aritmético-lógica (ALU) y un disco."
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation": "Un controlador de periférico contiene un buffer (RAM) donde se acumulan los datos y una lógica de control que administra el protocolo con la CPU y el dispositivo."
       },
       {
         "question": "¿De qué manera gestiona los datos una interfaz serie?",
@@ -1355,7 +1433,8 @@ export const modules = [
           "Recibe o envía la información bit tras bit utilizando registros de desplazamiento.",
           "Usa solo la CPU para enviar datos de a un byte por ciclo."
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "La interfaz serie transmite un bit por vez sobre una única línea; usa registros de desplazamiento para convertir entre paralelo (CPU) y serie (línea)."
       },
       {
         "question": "¿Qué técnica utiliza las señales de reconocimiento para el diálogo entre los dispositivos durante una transferencia de E/S?",
@@ -1365,7 +1444,8 @@ export const modules = [
           "Enmascaramiento de interrupción",
           "Ejecución en pipeline"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation": "El handshaking usa señales de petición y reconocimiento (request/acknowledge) para que emisor y receptor coordinen cada transferencia de datos."
       },
       {
         "question": "¿Cuál de las siguientes interrupciones suele ser considerada 'No Enmascarable'?",
@@ -1375,7 +1455,8 @@ export const modules = [
           "Pulsación de tecla del teclado",
           "Entrada de un puerto paralelo"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "Las interrupciones no enmascarables (NMI) no pueden ignorarse mediante el flag de interrupciones; se reservan para eventos críticos como RESET o errores de bus/paridad."
       }
     ]
   },
@@ -1383,7 +1464,10 @@ export const modules = [
     "id": 7,
     "title": "Unidad 7: Traductores",
     "description": "Arquitecturas CISC y RISC.",
-    "pdf": "17 - Unidad 7 Arquitectura CISC_y_RISC.pdf",
+    "pdfs": [
+      "16 - Unidad 7 Traductores de Lenguaje.pdf",
+      "17 - Unidad 7 Arquitectura CISC_y_RISC.pdf"
+    ],
     "flashcards": [
       {
         "term": "CISC (Significado)",
@@ -1515,7 +1599,8 @@ export const modules = [
           "Common Instruction Set Cache",
           "Computer Instruction Standard Code"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation": "CISC = Complex Instruction Set Computer: conjunto de instrucciones grande y complejo, con instrucciones que realizan operaciones de varios pasos."
       },
       {
         "question": "¿Qué componente utiliza una Unidad de Control CISC para interpretar las instrucciones?",
@@ -1525,7 +1610,8 @@ export const modules = [
           "Memoria cache separada para datos y códigos",
           "Segmentación de cauce pura"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "En CISC la Unidad de Control es microprogramada: cada instrucción se descompone en microinstrucciones almacenadas en una ROM de microcódigo."
       },
       {
         "question": "¿Qué característica es propia del formato de instrucciones en la arquitectura CISC?",
@@ -1535,7 +1621,8 @@ export const modules = [
           "Poseen formatos de tamaño variable",
           "Sólo ocupan un byte"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "Las instrucciones CISC tienen longitud variable (por ejemplo, de 1 a 15 bytes en x86), lo que complica la decodificación pero permite mayor densidad de código."
       },
       {
         "question": "¿Cuál es el significado de la sigla RISC?",
@@ -1545,7 +1632,8 @@ export const modules = [
           "Rapid Instruction Speed Controller",
           "Registry In System Cache"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "RISC = Reduced Instruction Set Computer: instrucciones simples, de tamaño fijo, que en general se ejecutan en un ciclo de reloj."
       },
       {
         "question": "¿Qué instrucciones se utilizan en la arquitectura RISC para acceder a la memoria?",
@@ -1555,7 +1643,8 @@ export const modules = [
           "JUMP y CALL",
           "LOAD y STORE"
         ],
-        "answer": 3
+        "answer": 3,
+        "explanation": "RISC usa arquitectura load/store: sólo LOAD y STORE acceden a memoria; el resto de las instrucciones opera exclusivamente entre registros."
       },
       {
         "question": "¿Cómo es el conjunto de registros en la arquitectura RISC?",
@@ -1565,7 +1654,8 @@ export const modules = [
           "Limitado a un solo registro acumulador",
           "Inexistente, todas las operaciones son en memoria"
         ],
-        "answer": 0
+        "answer": 0,
+        "explanation": "En RISC los registros son de propósito general y numerosos; cualquiera puede usarse como operando, a diferencia de CISC donde algunos tienen funciones específicas."
       },
       {
         "question": "En las arquitecturas CISC, ¿dónde reside principalmente la complejidad del diseño?",
@@ -1575,7 +1665,8 @@ export const modules = [
           "En el sistema operativo",
           "En la memoria principal"
         ],
-        "answer": 1
+        "answer": 1,
+        "explanation": "En CISC la complejidad está en el microprograma que interpreta cada instrucción; en RISC la complejidad se traslada al compilador."
       },
       {
         "question": "¿Qué familia de procesadores es un ejemplo clásico de arquitectura CISC?",
@@ -1585,7 +1676,8 @@ export const modules = [
           "Intel 8086, 80286, 80386",
           "MIPS"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "La familia Intel x86 (8086, 80286, 80386 y sucesores) es el ejemplo clásico de CISC. Los ejemplos clásicos de RISC son MIPS, ARM, SPARC y PowerPC."
       },
       {
         "question": "En una instrucción aritmética típica de RISC, ¿cuántos operandos se especifican generalmente?",
@@ -1595,7 +1687,8 @@ export const modules = [
           "Tres (dos de origen y uno de resultado)",
           "Cuatro"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "Las instrucciones aritméticas RISC son de tres operandos: dos registros fuente y un registro destino (por ejemplo ADD R1, R2, R3)."
       },
       {
         "question": "¿Por qué RISC suele utilizar dos memorias separadas?",
@@ -1605,7 +1698,8 @@ export const modules = [
           "Una para instrucciones y otra para datos, evitando conflictos de acceso",
           "Para respaldar la memoria virtual en caso de fallos"
         ],
-        "answer": 2
+        "answer": 2,
+        "explanation": "La arquitectura Harvard separa memoria de instrucciones y de datos, permitiendo buscar una instrucción y acceder a datos en el mismo ciclo, lo que facilita el pipeline."
       }
     ]
   }

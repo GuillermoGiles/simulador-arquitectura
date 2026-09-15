@@ -4,16 +4,16 @@ Una plataforma web interactiva diseñada para facilitar el estudio, repaso y pr�
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
 ## Características Principales
 
-*   **Banco de Flashcards (Spaced Repetition):** Más de 200 tarjetas de memoria interactivas generadas a partir de la bibliografía oficial, con buscador global para encontrar conceptos en segundos.
-*   **Simulador de CPU y Pipeline:** Componente visual interactivo para entender el flujo del ciclo de instrucción (Fetch, Decode, Execute, Memory, Writeback) a través de la Unidad de Control, Registros y ALU.
-*   **Resolutor Matemático Paso a Paso:** Conversor interactivo de bases (Binario, Decimal, Hexadecimal) que, en caso de error, muestra el desglose matemático mediante divisiones sucesivas.
-*   **Simulacros de Examen:** Generador aleatorio de exámenes con preguntas teóricas y prácticas que emulan la exigencia de un examen final real.
-*   **Lectura Integrada:** Visor de archivos PDF integrado para no tener que salir de la plataforma al consultar la teoría.
-*   **Gamificación:** Sistema de "Racha de Estudio" que cuenta los días consecutivos de actividad para mantener la motivación alta.
+*   **Flashcards con repaso activo:** 210 tarjetas generadas a partir de la bibliografía oficial. Marcá cada una como *La sabía* / *No la sabía*; las difíciles quedan guardadas y podés repasarlas solas. Atajos de teclado (← → espacio 1 2) y buscador global que también encuentra preguntas.
+*   **Quizzes con explicación:** 10 preguntas por unidad con el *por qué* de cada respuesta. Preguntas y opciones se mezclan en cada intento; se aprueba con 60% y se puede rehacer para repasar.
+*   **Simulador de Finales:** exámenes aleatorios de 5, 10 o 20 preguntas sobre todas las unidades, con historial de resultados y promedio.
+*   **Representación de Datos interactiva:** conversor de bases, enteros con signo (BSS, Signo y Módulo, Ca1, Ca2, Exceso) con 4/8/16 bits, descomposición IEEE 754 paso a paso y ejercicios con resolución detallada.
+*   **Simulador de CPU y Pipeline:** visualización del ciclo de instrucción (Fetch, Decode, Execute, Memory, Writeback) para instrucciones ALU, de carga y de salto.
+*   **Material integrado:** visor de PDF con todos los apuntes de cada unidad (pestañas cuando hay varios) y acceso a las clases grabadas.
+*   **Racha de estudio, modo oscuro y diseño responsive** para estudiar desde el celular.
 
 ## Instalación y Uso Local
 
@@ -37,8 +37,8 @@ Una plataforma web interactiva diseñada para facilitar el estudio, repaso y pr�
 
 ## Tecnologías Utilizadas
 
-*   **Frontend:** React 18, Vite.
-*   **Estilos:** CSS Modules / Vanilla CSS con variables de diseño personalizadas.
+*   **Frontend:** React 19, Vite, React Router.
+*   **Estilos:** CSS propio con variables de diseño (tema claro/oscuro).
 *   **Iconografía:** Lucide React.
 *   **Despliegue:** Vercel.
 
@@ -46,7 +46,7 @@ Una plataforma web interactiva diseñada para facilitar el estudio, repaso y pr�
 
 1. Representación de Datos en la Computadora.
 2. Circuitos Lógicos.
-3. Organización y Arquitectura.
+3. Circuitos Digitales (combinacionales, secuenciales, memorias).
 4. Estructura del Computador.
 5. Estructura del Procesador (Datapath & Pipeline).
 6. Interfaz de Entrada/Salida.

@@ -1,144 +1,130 @@
 import React, { useState, useEffect } from 'react';
-import { CheckCircle, XCircle } from 'lucide-react';
+import { CheckCircle, XCircle, RotateCcw, Lightbulb } from 'lucide-react';
+import { shuffle, shuffleQuestionOptions } from '../utils/shuffle';
+
+const PASS_RATIO = 0.6;
+
+// Cada intento baraja las preguntas y el orden de sus opciones.
+const buildAttempt = (quizData) => {
+  const questions = Array.isArray(quizData) ? quizData : [quizData];
+  return shuffle(questions).map(shuffleQuestionOptions);
+};
 
 const MiniQuiz = ({ quizData, isCompleted, onPass }) => {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [questions, setQuestions] = useState(() => buildAttempt(quizData));
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [showResult, setShowResult] = useState(false);
-  const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
-  const [quizFinished, setQuizFinished] = useState(false);
+  const [correctCount, setCorrectCount] = useState(0);
+  const [finished, setFinished] = useState(false);
+  // Si el módulo ya está aprobado, mostramos el resumen hasta que el usuario decida rehacerlo.
+  const [retaking, setRetaking] = useState(false);
 
-  useEffect(() => {
-    // Reset state when quiz changes
-    setCurrentQuestionIndex(0);
+  const restart = (data = quizData) => {
+    setQuestions(buildAttempt(data));
+    setCurrentIndex(0);
     setSelectedOption(null);
     setShowResult(false);
-    setCorrectAnswersCount(0);
-    setQuizFinished(false);
+    setCorrectCount(0);
+    setFinished(false);
+  };
+
+  useEffect(() => {
+    restart(quizData);
+    setRetaking(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [quizData]);
 
-  if (isCompleted) {
+  const total = questions.length;
+  const needed = Math.ceil(total * PASS_RATIO);
+  const currentQuestion = questions[currentIndex];
+
+  if (isCompleted && !retaking) {
     return (
-      <div className="glass-card p-6" style={{ background: 'rgba(16, 185, 129, 0.05)', borderColor: 'var(--success-color)' }}>
+      <div className="glass-card p-6" style={{ background: 'var(--success-soft)', borderColor: 'var(--success-color)' }}>
         <h3 className="flex items-center gap-2 text-success">
           <CheckCircle /> Cuestionario de Módulo Aprobado
         </h3>
-        <p style={{ marginTop: '0.5rem', color: 'var(--text-secondary)' }}>
-          Ya has superado la prueba de conocimientos de este módulo.
-        </p>
+        <p className="mt-2 mb-4">Ya superaste la prueba de conocimientos de este módulo. Podés rehacerla para repasar.</p>
+        <button type="button" className="btn-secondary btn-sm" onClick={() => { restart(); setRetaking(true); }}>
+          <RotateCcw size={16} /> Rehacer cuestionario
+        </button>
       </div>
     );
   }
 
-  // Si quizData es un array de preguntas (nuevo formato)
-  const questions = Array.isArray(quizData) ? quizData : [quizData];
-  const currentQuestion = questions[currentQuestionIndex];
-
   if (!currentQuestion) return null;
-
-  const handleSelect = (index) => {
-    if (showResult) return;
-    setSelectedOption(index);
-  };
 
   const isCorrect = selectedOption === currentQuestion.answer;
 
   const handleVerify = () => {
     setShowResult(true);
-    if (isCorrect) {
-      setCorrectAnswersCount(prev => prev + 1);
-    }
+    if (isCorrect) setCorrectCount(c => c + 1);
   };
 
   const handleNext = () => {
-    if (currentQuestionIndex + 1 < questions.length) {
-      setCurrentQuestionIndex(prev => prev + 1);
+    if (currentIndex + 1 < total) {
+      setCurrentIndex(i => i + 1);
       setSelectedOption(null);
       setShowResult(false);
-    } else {
-      setQuizFinished(true);
-      // Requerimos al menos un 60% para aprobar (6/10)
-      const isPassed = (correctAnswersCount + (isCorrect ? 1 : 0)) >= Math.ceil(questions.length * 0.6);
-      if (isPassed) {
-        onPass();
-      }
+      return;
     }
+    setFinished(true);
+    if (correctCount >= needed) onPass();
   };
 
-  const handleRetry = () => {
-    setCurrentQuestionIndex(0);
-    setSelectedOption(null);
-    setShowResult(false);
-    setCorrectAnswersCount(0);
-    setQuizFinished(false);
-  };
-
-  if (quizFinished) {
-    const totalCorrect = correctAnswersCount;
-    const passed = totalCorrect >= Math.ceil(questions.length * 0.6);
+  if (finished) {
+    const passed = correctCount >= needed;
     return (
-      <div className="glass-card p-6" style={{ textAlign: 'center', borderColor: passed ? 'var(--success-color)' : 'var(--accent-color)' }}>
-        <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>
-          Resultado: {totalCorrect} / {questions.length}
-        </h3>
+      <div className={`glass-card p-6 result-card ${passed ? 'pass' : 'fail'}`}>
+        <h3 style={{ fontSize: '1.5rem' }}>Resultado: {correctCount} / {total}</h3>
         <p className="mb-4">
-          {passed 
-            ? '¡Felicitaciones! Has demostrado tener los conocimientos necesarios.' 
-            : 'No has alcanzado el 60% necesario para aprobar. Te sugerimos repasar la teoría.'}
+          {passed
+            ? '¡Felicitaciones! Demostraste tener los conocimientos necesarios.'
+            : `No alcanzaste el ${Math.round(PASS_RATIO * 100)}% necesario (${needed} de ${total}). Te sugerimos repasar la teoría y las flashcards.`}
         </p>
-        {!passed && (
-          <button onClick={handleRetry} className="btn-secondary">
-            Reintentar Cuestionario
-          </button>
-        )}
         {passed && (
-          <p className="text-success font-bold flex items-center justify-center gap-2">
+          <p className="text-success font-bold flex items-center justify-center gap-2 mb-4">
             <CheckCircle /> Módulo completado
           </p>
         )}
+        <button type="button" onClick={() => restart()} className={passed ? 'btn-secondary' : 'btn-primary'}>
+          <RotateCcw size={16} /> {passed ? 'Rehacer para repasar' : 'Reintentar cuestionario'}
+        </button>
       </div>
     );
   }
 
   return (
     <div className="glass-card p-6">
-      <div className="flex justify-between items-center mb-4">
-        <h3 style={{ fontSize: '1.2rem' }}>Requisito de Completado</h3>
-        <span style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
-          Pregunta {currentQuestionIndex + 1} de {questions.length}
-        </span>
+      <div className="flex justify-between items-center mb-4 gap-2 flex-wrap">
+        <h3 style={{ fontSize: '1.2rem', margin: 0 }}>{isCompleted ? 'Repaso del módulo' : 'Requisito de Completado'}</h3>
+        <span className="text-sm muted">Pregunta {currentIndex + 1} de {total}</span>
       </div>
-      
-      <p style={{ marginBottom: '1.5rem', fontWeight: '500' }}>{currentQuestion.question}</p>
-      
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+
+      <p className="mb-6" style={{ fontWeight: 500, color: 'var(--text-primary)' }}>{currentQuestion.question}</p>
+
+      <div className="quiz-options">
         {currentQuestion.options.map((opt, index) => {
-          let styleClass = 'quiz-option';
-          if (selectedOption === index) styleClass += ' selected';
-          
-          if (showResult && selectedOption === index) {
-            if (isCorrect) styleClass += ' correct';
-            else styleClass += ' incorrect';
-          }
-          if (showResult && index === currentQuestion.answer && !isCorrect) {
-            styleClass += ' correct'; 
-          }
+          const isSelected = selectedOption === index;
+          const isAnswer = index === currentQuestion.answer;
+          let cls = 'quiz-option';
+          if (isSelected && !showResult) cls += ' selected';
+          if (showResult && isAnswer) cls += ' correct';
+          if (showResult && isSelected && !isAnswer) cls += ' incorrect';
 
           return (
             <button
               key={index}
-              className={styleClass}
-              onClick={() => handleSelect(index)}
+              type="button"
+              className={cls}
+              onClick={() => !showResult && setSelectedOption(index)}
               disabled={showResult}
-              style={{
-                borderColor: showResult && selectedOption === index && !isCorrect ? '#ef4444' : '',
-                background: showResult && selectedOption === index && !isCorrect ? 'rgba(239, 68, 68, 0.05)' : ''
-              }}
             >
-              <div className="flex justify-between items-center">
+              <div className="quiz-option-inner">
                 <span>{opt}</span>
-                {showResult && index === currentQuestion.answer && <CheckCircle size={18} className="text-success" />}
-                {showResult && selectedOption === index && !isCorrect && <XCircle size={18} color="#ef4444" />}
+                {showResult && isAnswer && <CheckCircle size={18} className="text-success" />}
+                {showResult && isSelected && !isAnswer && <XCircle size={18} className="text-danger" />}
               </div>
             </button>
           );
@@ -146,21 +132,24 @@ const MiniQuiz = ({ quizData, isCompleted, onPass }) => {
       </div>
 
       {!showResult && selectedOption !== null && (
-        <button onClick={handleVerify} className="btn-primary" style={{ marginTop: '1.5rem', width: '100%', justifyContent: 'center' }}>
+        <button type="button" onClick={handleVerify} className="btn-primary w-full mt-6">
           Verificar Respuesta
         </button>
       )}
 
       {showResult && (
-        <div style={{ marginTop: '1.5rem', textAlign: 'center' }}>
-          {isCorrect ? (
-            <p style={{ color: 'var(--success-color)', marginBottom: '1rem', fontWeight: 'bold' }}>¡Correcto!</p>
-          ) : (
-            <p style={{ color: '#ef4444', marginBottom: '1rem', fontWeight: 'bold' }}>Incorrecto.</p>
+        <div className="quiz-feedback">
+          <p className={`quiz-verdict ${isCorrect ? 'ok' : 'ko'}`}>
+            {isCorrect ? '¡Correcto!' : 'Incorrecto.'}
+          </p>
+          {currentQuestion.explanation && (
+            <div className="explanation">
+              <strong className="flex items-center gap-1 mb-1"><Lightbulb size={14} /> Por qué</strong>
+              {currentQuestion.explanation}
+            </div>
           )}
-          
-          <button onClick={handleNext} className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-            {currentQuestionIndex + 1 < questions.length ? 'Siguiente Pregunta' : 'Ver Resultados'}
+          <button type="button" onClick={handleNext} className="btn-primary w-full mt-4">
+            {currentIndex + 1 < total ? 'Siguiente Pregunta' : 'Ver Resultados'}
           </button>
         </div>
       )}
