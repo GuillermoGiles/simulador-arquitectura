@@ -2,11 +2,12 @@ import React, { useState, useMemo } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { BookOpen, CheckCircle, Home, FileText, Search } from 'lucide-react';
 import { modules } from '../data/modules';
+import { notes } from '../data/notes';
 
 const MAX_RESULTS = 10;
 
 // Normaliza para que la búsqueda ignore acentos y mayúsculas.
-const normalize = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const normalize = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
 function searchContent(query) {
   const q = normalize(query);
@@ -26,6 +27,11 @@ function searchContent(query) {
         found.push({ type: 'Pregunta', text: question.question, id: mod.id, context: mod.title });
       }
     }
+    for (const section of notes[mod.id] ?? []) {
+      if (normalize(section.title).includes(q) || normalize(section.content).includes(q)) {
+        found.push({ type: 'Apunte', text: section.title, id: mod.id, context: mod.title, section: section.title });
+      }
+    }
     if (found.length >= MAX_RESULTS) break;
   }
 
@@ -42,7 +48,7 @@ const Sidebar = ({ progress, open, themeButton }) => {
   );
 
   const handleSelectResult = (res) => {
-    navigate(`/module/${res.id}`, { state: { targetTerm: res.term ?? null } });
+    navigate(`/module/${res.id}`, { state: { targetTerm: res.term ?? null, targetSection: res.section ?? null } });
     setSearchQuery('');
   };
 

@@ -12,6 +12,7 @@ Una plataforma web interactiva diseñada para facilitar el estudio, repaso y pr�
 *   **Simulador de Finales:** exámenes aleatorios de 5, 10 o 20 preguntas sobre todas las unidades, con historial de resultados y promedio.
 *   **Representación de Datos interactiva:** conversor de bases, enteros con signo (BSS, Signo y Módulo, Ca1, Ca2, Exceso) con 4/8/16 bits, descomposición IEEE 754 paso a paso y ejercicios con resolución detallada.
 *   **Simulador de CPU y Pipeline:** visualización del ciclo de instrucción (Fetch, Decode, Execute, Memory, Writeback) para instrucciones ALU, de carga y de salto.
+*   **Mis Apuntes:** resumen de cursada transcripto del cuaderno (`src/data/notes.js`), por unidad y sección, con tablas y fórmulas; se abre desde el buscador global.
 *   **Material integrado:** visor del PDF oficial de teoría de la cátedra (`public/pdfs/teoria.pdf`, 521 páginas); cada módulo abre directamente en la página de su unidad, con pestañas por tema. Acceso a las clases grabadas.
 *   **Racha de estudio, modo oscuro y diseño responsive** para estudiar desde el celular.
 

@@ -6,6 +6,8 @@ import MiniQuiz from '../components/MiniQuiz';
 import BaseConverter from '../components/BaseConverter';
 import Flashcards from '../components/Flashcards';
 import CpuSimulator from '../components/CpuSimulator';
+import NotesPanel from '../components/NotesPanel';
+import { notes } from '../data/notes';
 
 const RECORDINGS = [
   { label: 'Teoría', href: 'http://tinyurl.com/CsGrabadas-ArquiTeoria' },
@@ -41,6 +43,8 @@ const ModuleView = ({ progress, setProgress }) => {
   const isCompleted = progress.includes(id);
   const hasQuiz = Array.isArray(module.quiz) && module.quiz.length > 0;
   const targetTerm = location.state?.targetTerm;
+  const targetSection = location.state?.targetSection;
+  const moduleNotes = notes[module.id];
   const sections = module.sections ?? [];
   const currentSection = sections[sectionIndex] ?? sections[0];
 
@@ -85,6 +89,8 @@ const ModuleView = ({ progress, setProgress }) => {
       {module.flashcards && (
         <Flashcards moduleId={module.id} flashcards={module.flashcards} targetTerm={targetTerm} />
       )}
+
+      {moduleNotes && <NotesPanel sections={moduleNotes} targetSection={targetSection} />}
 
       <div className="module-body">
         <div className="glass-card p-6">

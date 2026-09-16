@@ -870,3 +870,89 @@ button:disabled {
   .p-8 { padding: 1.25rem; }
   .cpu-diagram { padding: 1rem; }
 }
+
+/* ---------- Apuntes ---------- */
+.notes { display: flex; flex-direction: column; gap: 0.5rem; }
+.note-section {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--surface-color);
+  overflow: hidden;
+}
+.note-section.open { border-color: var(--accent-color); }
+.note-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.note-toggle:hover { background: var(--surface-hover); }
+.note-toggle .note-title { flex: 1; }
+.note-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent-color);
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.note-body {
+  padding: 0.25rem 1.25rem 1.25rem 1.25rem;
+  border-top: 1px solid var(--border-color);
+  line-height: 1.7;
+}
+.note-body > * + * { margin-top: 0.75rem; }
+.note-h2 { font-size: 1.1rem; margin-top: 1.25rem !important; color: var(--accent-color); }
+.note-h3 { font-size: 1rem; margin-top: 1rem !important; }
+.note-p { color: var(--text-primary); }
+.note-list { padding-left: 1.4rem; color: var(--text-primary); }
+.note-list li + li { margin-top: 0.25rem; }
+.note-list .note-list { margin-top: 0.25rem; }
+.note-quote {
+  margin: 0.75rem 0;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid var(--accent-color);
+  background: var(--accent-soft);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.note-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  background: var(--surface-hover);
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+.note-table-wrap { overflow-x: auto; margin: 0.75rem 0; }
+.note-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9rem;
+}
+.note-table th, .note-table td {
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+  vertical-align: top;
+}
+.note-table th {
+  background: var(--accent-soft);
+  color: var(--accent-color);
+  font-weight: 700;
+}
+.note-table tbody tr:nth-child(even) { background: var(--bg-color); }
